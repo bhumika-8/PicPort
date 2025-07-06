@@ -1,0 +1,30 @@
+.image-upload__preview {
+  width: 13rem;
+  height: 13rem;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 1rem;
+
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.95rem;
+  color: #ffffff;
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+.image-upload__preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0.75rem;
+}
+.image-upload__preview:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 32px rgba(255, 255, 255, 0.15);
+}

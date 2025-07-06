@@ -1,0 +1,56 @@
+input,
+textarea {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  padding: 0.6rem 1rem;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.25s ease;
+  letter-spacing: 0.5px;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+.form-control {
+  margin: 1rem 0;
+}
+
+.form-control label {
+  display: block;
+  font-weight: 500;
+  font-family: 'Roboto', sans-serif;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+  letter-spacing: 0.6px;
+  font-size: 0.95rem;
+}
+
+.form-control input,
+.form-control textarea {
+  display: block;
+  width: 100%;
+}
+
+/* Validation styling */
+.form-control--invalid label,
+.form-control--invalid p {
+  color: #ffffff;
+  text-shadow: 0 0 4px rgba(255, 0, 100, 0.3); /* light soft pink-red glow */
+}
+
+.form-control--invalid input,
+.form-control--invalid textarea {
+  border-color: #E9A5F1; /* accent border only */
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 4px rgba(233, 165, 241, 0.3); /* cotton pink glow */
+}

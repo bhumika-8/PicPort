@@ -1,0 +1,21 @@
+.users-list {
+  list-style: none;
+  margin: 2rem auto;
+  padding: 0; /* Remove inner padding */
+  width: 90%;
+  max-width: 50rem;
+
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  
+
+  background: transparent; /* Completely transparent */
+  backdrop-filter: none;   /* No blur */
+  border-radius: 0;
+  border: none;
+
+  font-family: 'Roboto', sans-serif;
+  color: #ffffff; /* Maintain white font for consistency */
+  letter-spacing: 0.5px;
+}

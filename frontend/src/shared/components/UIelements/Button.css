@@ -1,0 +1,75 @@
+button.button,
+a.button,
+.button {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+  padding: 0.5rem 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #ffffff;
+  cursor: pointer;
+  margin-right: 1rem;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+  letter-spacing: 0.6px;
+  box-shadow: 0 4px 16px rgba(255, 255, 255, 0.1);
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:hover,
+.button:active {
+  background: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 6px 24px rgba(255, 255, 255, 0.15);
+  transform: scale(1.03);
+}
+
+.button--inverse {
+  background: transparent;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.button--inverse:hover,
+.button--inverse:active {
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+.button--danger {
+  background: rgba(255, 0, 80, 0.15);
+  border-color: rgba(255, 0, 80, 0.4);
+  color: #ffffff;
+}
+
+.button--danger:hover,
+.button--danger:active {
+  background: rgba(255, 0, 80, 0.25);
+  border-color: rgba(255, 0, 80, 0.5);
+  box-shadow: 0 4px 20px rgba(255, 0, 80, 0.3);
+}
+
+.button:disabled,
+.button:hover:disabled,
+.button:active:disabled {
+  background: rgba(255, 255, 255, 0.05);
+  color: #aaa;
+  border-color: rgba(255, 255, 255, 0.1);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.button--small {
+  font-size: 0.8rem;
+}
+
+.button--big {
+  font-size: 1.5rem;
+}

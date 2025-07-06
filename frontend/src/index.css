@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(135deg, #6c63ff, #a26dff, #d18fff);
+  color: #ffffff;
+  overflow-x: hidden;
+  letter-spacing: 0.5px;
+}
+
+/* Generic layout spacing */
+body {
+  padding-top: 4rem; /* navbar height space */
+}
+
+/* Page container spacing */
+.page-content {
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  max-width: 1200px;
+}
+
+/* Glass effect container */
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(17px);
+  -webkit-backdrop-filter: blur(17px);
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.05),
+    inset 0 0 10px 5px rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  color: #ffffff;
+  transition: transform 0.3s ease;
+  letter-spacing: 0.4px;
+}
+
+.glass-card:hover {
+  transform: scale(1.02);
+}
+
+/* Transition Animations */
+.slide-in-left-enter {
+  transform: translateX(-100%);
+}
+
+.slide-in-left-enter-active {
+  transform: translateX(0);
+  opacity: 1;
+  transition: all 300ms ease-in-out;
+}
+
+.slide-in-left-exit {
+  transform: translateX(0%);
+  opacity: 1;
+}
+
+.slide-in-left-exit-active {
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: all 300ms ease-in-out;
+}
+
+/* Utility classes */
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+}
+
+.text-muted {
+  color: #e5e7eb;
+  letter-spacing: 0.4px;
+}
+
+button {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.75rem;
+  background: #60a5fa;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+button:hover {
+  background: #3b82f6;
+  transform: scale(1.03);
+}
+
+a {
+  color: #c68efd;
+  text-decoration: none;
+  letter-spacing: 0.4px;
+  font-weight: 500;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #e9a5f1;
+}

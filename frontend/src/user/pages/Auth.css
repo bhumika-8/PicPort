@@ -1,0 +1,66 @@
+.place-form {
+  list-style: none;
+  margin: 2rem auto;
+  padding: 2.5rem 2rem;
+  width: 90%;
+  max-width: 40rem;
+
+  background: rgba(255, 255, 255, 0.12); /* translucent glass */
+  backdrop-filter: blur(17px);
+  -webkit-backdrop-filter: blur(17px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.05),
+    inset 0 0 12px 6px rgba(255, 255, 255, 0.06);
+
+  color: #ffffff;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 0.5px;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.place-form:hover {
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.2),
+    inset 0 0 20px rgba(255, 255, 255, 0.08);
+  transform: scale(1.015);
+}
+
+/* Auth container layout remains */
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+/* Button with a glowing glass look */
+.auth-toggle-button {
+  margin-top: 1rem;
+  padding: 0.6rem 1.8rem;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 14px;
+
+  color: #ffffff;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+
+  box-shadow:
+    0 4px 20px rgba(255, 255, 255, 0.1),
+    inset 0 0 8px rgba(255, 255, 255, 0.05);
+
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+}
+
+.auth-toggle-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.04);
+}

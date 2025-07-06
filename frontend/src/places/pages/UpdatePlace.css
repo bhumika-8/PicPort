@@ -1,0 +1,35 @@
+.place-list {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  width: 90%;
+  max-width: 60rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  font-family: 'Roboto', sans-serif;
+  color: #ffffff;
+}
+
+.place-list.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 1rem;
+
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  padding: 2rem;
+  text-align: center;
+  color: #ffffff;
+  font-size: 1.25rem;
+  font-family: 'Roboto', sans-serif;
+
+  max-width: 500px;
+  margin: 5rem auto;
+}
