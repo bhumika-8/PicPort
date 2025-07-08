@@ -1,29 +1,25 @@
+// middleware/file-upload.js
 import multer from 'multer';
-import { v4 as uuidv4 } from 'uuid';
+import { CloudinaryStorage } from 'multer-storage-cloudinary';
+import { v2 as cloudinary } from 'cloudinary';
+import dotenv from 'dotenv';
 
-const MIME_TYPE_MAP={
-    'image/png':'png',
-    'image/jpeg':'jpeg',
-    'image/jpg':'jpg'
+dotenv.config(); // load .env values for cloudinary config
 
-};
-const fileUpload=multer({
-    limits:500000,
-    storage:multer.diskStorage({
-        destination:(req,file,cb)=>{
-            cb(null,'uploads/images');
-        },
-        filename:(req,file,cb)=>{
-            const ext=MIME_TYPE_MAP[file.mimetype];
-            cb(null,uuidv4()+'.'+ext);
-
-        }
-    }),
-    fileFilter:(req,file,cb)=>{
-        const isValid=!!MIME_TYPE_MAP[file.mimetype];
-        let error=isValid?null:new Error("invalid mime type!");
-        cb(error,isValid);
-    }
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET
 });
+
+const storage = new CloudinaryStorage({
+  cloudinary,
+  params: {
+    folder: 'picport', // optional: your folder name on Cloudinary
+    allowed_formats: ['jpg', 'jpeg', 'png']
+  }
+});
+
+const fileUpload = multer({ storage });
 
 export default fileUpload;

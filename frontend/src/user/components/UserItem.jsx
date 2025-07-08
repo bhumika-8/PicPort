@@ -9,7 +9,7 @@ const UserItem = props => {
                 <div className="user-item__content">
 
                     <div className="user-item__image">
-                        <img src={`${BACKEND_URL}/${props.image}`} alt={props.name} />
+                        <img src={`${props.image}`} alt={props.name} />
                     </div>
                     <div className="user-item__info">
                         <h2>{props.name}</h2>

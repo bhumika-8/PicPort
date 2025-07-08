@@ -26,7 +26,7 @@ const signup = async (req, res, next) => {
         return next(new HttpError('invalid credentials', 422));
     }
     const { name, email, password } = req.body;
-
+    const imageUrl = req.file?.path;
     let existingUser
     try {
         existingUser = await User.findOne({ email });
@@ -50,7 +50,8 @@ const signup = async (req, res, next) => {
         name,
         email,
         password: hashedPassword,
-        image: req.file.path,
+        image: imageUrl,
+
         places: []
     });
     try {
@@ -74,7 +75,7 @@ const signup = async (req, res, next) => {
 
 
     res.status(201).json({ userId: createdUser.id, email: createdUser.email, token: token });
-
+    
 };
 
 const login = async (req, res, next) => {
