@@ -34,7 +34,7 @@ const UserPlaces = () => {
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />
       {isLoading && <div className="center"><LoadingSpinner /></div>}
-      {!isLoading && loadedPlaces && <PlaceList items={loadedPlaces} onDelete={deletePlaceHandler} />}
+      {!isLoading && loadedPlaces && <PlaceList items={loadedPlaces} onDelete={deletePlaceHandler} profileUserId={userId}/>}
     </React.Fragment>
   );
 };

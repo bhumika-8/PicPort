@@ -9,7 +9,7 @@ const authhook = () => {
   const [isAuthReady, setIsAuthReady] = useState(false); // ✅ new flag
 
   const login = useCallback((uid, token, expirationDate) => {
-    console.log("👀 login() called with:", uid, token);
+   
     setToken(token);
     setUserId(uid);
     const tokenExpiry = expirationDate || new Date(new Date().getTime() + 1000 * 60 * 60);
@@ -48,7 +48,7 @@ const authhook = () => {
     ) {
       login(storedData.userId, storedData.token, new Date(storedData.expiration));
     }
-    setIsAuthReady(true); // ✅ fire after login attempt
+    setIsAuthReady(true); 
   }, [login]);
 
   return { token, login, logout, userId, isAuthReady };
