@@ -1,10 +1,10 @@
 # PicPort
 
-PicPort is a full-stack MERN application for uploading and sharing images of places. Users can sign up, authenticate, create places, and upload images which are stored securely on Cloudinary. The frontend is built using React and deployed via Firebase, while the backend is built with Node.js/Express and deployed on Render.
+PicPort is a full-stack MERN application for uploading and sharing images of places. Users can sign up, authenticate, create places, and upload images which are stored securely on Cloudinary. The frontend is built using React and deployed via Vercel, while the backend is built with Node.js/Express and deployed on Render.
 
 ## Live Demo
 
-- Frontend: https://picport-app.web.app 
+- Frontend: https://pic-port.vercel.app
 - Backend API: https://picport-backend-ouzn.onrender.com
 
 ## Features
@@ -15,7 +15,7 @@ PicPort is a full-stack MERN application for uploading and sharing images of pla
 - Create, update, and delete places (title, description, address, image)
 - Deleting a place also deletes the associated Cloudinary image
 - Fully responsive frontend with modern glassmorphism UI
-- Cloud-based deployment (Firebase for frontend, Render for backend)
+- Cloud-based deployment (Vercel for frontend, Render for backend)
 
 ## Technologies Used
 
@@ -24,7 +24,7 @@ PicPort is a full-stack MERN application for uploading and sharing images of pla
 - React (with Hooks and Context API)
 - React Router
 - Vite
-- Firebase Hosting
+- Vercel (deployment)
 - Custom CSS styling with transitions and effects
 
 ### Backend
@@ -62,16 +62,15 @@ PicPort is a full-stack MERN application for uploading and sharing images of pla
 
 - Node.js and npm
 - MongoDB (local or hosted via Atlas)
-- Firebase CLI (optional, for frontend deployment)
 
 ### Clone the repository
-git clone https://github.com/bhumika-8/PicPort.git
-cd picport
+- `git clone https://github.com/bhumika-8/PicPort.git`
+- `cd picport`
 
 ### Setup Backend
 
-cd backend
-npm install
+- `cd backend`
+- `npm install`
 
 Create a `.env` file inside the `backend` directory and fill in the required environment variable values as listed above.
 
@@ -86,8 +85,8 @@ npm start
 
 ### Setup Frontend
 
-cd ../frontend
-npm install
+- `cd ../frontend`
+- `npm install`
 
 Create a `.env` file inside the `frontend` directory:
 
@@ -107,8 +106,9 @@ npm run dev
 
 To build and deploy:
 
-- `npm run build`
-- `firebase deploy`
+- Push commits to GitHub
+- Vercel auto-deploys on push or can be manually triggered
+- Make sure Vercel environment variables are correctly set in the dashboard:
 
 ### Backend (Render)
 
