@@ -11,7 +11,7 @@ import LoadingSpinner from "../../shared/components/UIelements/LoadingSpinner";
 const PlaceItem = (props) => {
   const auth = useContext(AuthContext);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
-
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
   const [showMap, setShowMap] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
 
@@ -30,17 +30,15 @@ const PlaceItem = (props) => {
     setShowConfirmModal(false);
     try {
       await sendRequest(
-        `http://localhost:5000/api/places/${props.id}`,
+        `${BACKEND_URL}/api/places/${props.id}`,
         "DELETE",
         null,
         {
-          Authorization: "Bearer " + auth.token // Only if you're using JWTs
+          Authorization: "Bearer " + auth.token 
         }
       );
-      props.onDelete(props.id); // Notify parent to update UI
-    } catch (err) {
-      // Error will show in ErrorModal
-    }
+      props.onDelete(props.id); 
+    } catch (err) {}
   };
 
   return (
@@ -77,7 +75,7 @@ const PlaceItem = (props) => {
         {isLoading && <LoadingSpinner asOverlay />}
         <div className="place-item-container">
           <div className="place-item__image">
-            <img src={`http://localhost:5000/${props.image}`} alt={props.title} />
+            <img src={`${BACKEND_URL}/${props.image}`} alt={props.title} />
           </div>
           <div className="place-item__info">
             <h2>{props.title}</h2>
@@ -86,8 +84,8 @@ const PlaceItem = (props) => {
           </div>
           <div className="place-item__actions">
             <Button inverse onClick={openMap}> View On Map</Button>
-            {auth.userId===props.creatorId && (<Button to={`/places/${props.id}`}>Edit</Button>)}
-            {auth.userId===props.creatorId && (<Button danger onClick={showDeleteWarnHandler}>Delete</Button>)}
+            {auth.userId === props.creatorId && (<Button to={`/places/${props.id}`}>Edit</Button>)}
+            {auth.userId === props.creatorId && (<Button danger onClick={showDeleteWarnHandler}>Delete</Button>)}
           </div>
         </div>
       </li>

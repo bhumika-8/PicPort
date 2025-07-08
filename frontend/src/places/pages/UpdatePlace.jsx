@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Input from "../../shared/components/FormElements/Input";
 import Button from "../../shared/components/UIelements/Button";
@@ -11,11 +11,12 @@ import { useHttpClient } from "../../shared/hooks/http-hook";
 import LoadingSpinner from "../../shared/components/UIelements/LoadingSpinner";
 import ErrorModal from "../../shared/components/UIelements/ErrorModal";
 import "./UpdatePlace.css";
-
+import { AuthContext } from "../../shared/context/auth-context";
 const UpdatePlace = () => {
   const { placeId } = useParams();
   const navigate = useNavigate();
-
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+  const auth = useContext(AuthContext);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [loadedPlace, setLoadedPlace] = useState();
 
@@ -33,12 +34,11 @@ const UpdatePlace = () => {
     false
   );
 
-  // Fetch place by ID
   useEffect(() => {
     const fetchPlace = async () => {
       try {
         const responseData = await sendRequest(
-          `http://localhost:5000/api/places/${placeId}`
+          `${BACKEND_URL}/api/places/${placeId}`
         );
         setLoadedPlace(responseData.place);
         setFormData(
@@ -54,9 +54,7 @@ const UpdatePlace = () => {
           },
           true
         );
-      } catch (err) {
-        // error handled by hook
-      }
+      } catch (err) {}
     };
     fetchPlace();
   }, [sendRequest, placeId, setFormData]);
@@ -65,20 +63,19 @@ const UpdatePlace = () => {
     event.preventDefault();
     try {
       await sendRequest(
-        `http://localhost:5000/api/places/${placeId}`,
+        `${BACKEND_URL}/api/places/${placeId}`,
         "PATCH",
         JSON.stringify({
           title: formState.inputs.title.value,
           description: formState.inputs.description.value
         }),
         {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          Authorization: 'Bearer ' + auth.token
         }
       );
       navigate(`/${loadedPlace.creator}/places`);
-    } catch (err) {
-      // error handled by hook
-    }
+    } catch (err) {}
   };
 
   if (isLoading) {

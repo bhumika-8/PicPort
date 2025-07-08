@@ -1,4 +1,4 @@
-import React ,{useState,useCallback} from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Users from './user/pages/Users';
 import MainNavigation from './shared/components/Navigation/MainNavigation';
@@ -7,36 +7,30 @@ import NewPlaces from './places/pages/NewPlaces';
 import UpdatePlace from './places/pages/UpdatePlace';
 import Auth from './user/pages/Auth';
 import { AuthContext } from './shared/context/auth-context';
-
+import authhook from './shared/hooks/auth-hook';
+import LoadingSpinner from './shared/components/UIelements/LoadingSpinner';
 function App() {
-  const [isLogged,setIsLogged]=useState(false);
-  const [userId,setUserId]=useState(null);
-  
-  const login=useCallback((uid)=>{
-    setIsLogged(true);
-    setUserId(uid)
-  },[]);
+  const { token, login, logout, userId, isAuthReady } = authhook();
 
-    const logout=useCallback(()=>{
-    setIsLogged(false);
-    setUserId(null)
-  },[]);
+if (!isAuthReady) {
+  <LoadingSpinner />
+}
 
   return (
-   <AuthContext.Provider value={{ isLogged, userId, login, logout }}>
+    <AuthContext.Provider value={{ isLogged: !!token, token: token, userId, login, logout }}>
 
-    <Router>
-      <MainNavigation />
-      <div className='page-content'>
-        <Routes>
-          <Route path="/" element={<Users />} />
-          <Route path="/places/new" element={<NewPlaces />} />
-          <Route path="/places/:placeId" element={<UpdatePlace />} />
-          <Route path="/auth" element={<Auth />}/>
-          <Route path="/:userId/places" element={<UserPlaces />} />
-        </Routes>
-     </div>
-    </Router>
+      <Router>
+        <MainNavigation />
+        <div className='page-content'>
+          <Routes>
+            <Route path="/" element={<Users />} />
+            <Route path="/places/new" element={<NewPlaces />} />
+            <Route path="/places/:placeId" element={<UpdatePlace />} />
+            <Route path="/auth" element={<Auth />} />
+            <Route path="/:userId/places" element={<UserPlaces />} />
+          </Routes>
+        </div>
+      </Router>
     </AuthContext.Provider>
   );
 }

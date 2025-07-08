@@ -1,5 +1,6 @@
 // util/location.js
 import axios from "axios";
+import HttpError from "../models/http-error.js";
 
 export const getCoordsForAddress = async (address) => {
   const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`;
@@ -13,7 +14,8 @@ export const getCoordsForAddress = async (address) => {
   const data = response.data;
 
   if (!data || data.length === 0) {
-    throw new Error("Could not find location for the specified address.");
+    const error=new HttpError('Could not find the coordinates for the given address, kindly enter valid address',500);
+    return next(error);
   }
 
   const location = {

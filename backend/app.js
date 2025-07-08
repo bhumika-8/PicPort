@@ -23,10 +23,7 @@ app.use((req, res, next) => {
 
 app.use(express.urlencoded({ extended: true }));
 
-// Routes
-// app.get("/", (req, res) => {
-//   res.send("<h1>heyya</h1>");
-// });
+
 app.use("/api/users",userRoutes);
 app.use("/api/places",placesRoutes);
 
@@ -62,7 +59,7 @@ mongoose.connect(process.env.MONGO_URL)
 .catch((err) => {
   console.error('Error connecting to the database!');
  
-  console.error(err.message); // <-- This gives you the actual reason
+  console.error(err.message); 
 });
 
 

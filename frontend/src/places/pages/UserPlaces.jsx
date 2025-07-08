@@ -8,24 +8,23 @@ import ErrorModal from '../../shared/components/UIelements/ErrorModal';
 const UserPlaces = () => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [loadedPlaces, setLoadedPlaces] = useState();
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
   const userId = useParams().userId;
-const deletePlaceHandler = (deletedPlaceId) => {
-  setLoadedPlaces(prevPlaces =>
-    prevPlaces.filter(place => place.id.toString() !== deletedPlaceId.toString())
-  );
-};
+  const deletePlaceHandler = (deletedPlaceId) => {
+    setLoadedPlaces(prevPlaces =>
+      prevPlaces.filter(place => place.id.toString() !== deletedPlaceId.toString())
+    );
+  };
 
 
   useEffect(() => {
     const fetchPlaces = async () => {
       try {
         const responseData = await sendRequest(
-          `http://localhost:5000/api/places/user/${userId}`
+          `${BACKEND_URL}/api/places/user/${userId}`
         );
         setLoadedPlaces(responseData.places);
-      } catch (err) {
-        // error handled by ErrorModal
-      }
+      } catch (err) {}
     };
 
     fetchPlaces();
@@ -35,7 +34,7 @@ const deletePlaceHandler = (deletedPlaceId) => {
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />
       {isLoading && <div className="center"><LoadingSpinner /></div>}
-      {!isLoading && loadedPlaces && <PlaceList items={loadedPlaces} onDelete={deletePlaceHandler}/>}
+      {!isLoading && loadedPlaces && <PlaceList items={loadedPlaces} onDelete={deletePlaceHandler} />}
     </React.Fragment>
   );
 };
