@@ -21,7 +21,6 @@ export const useHttpClient = () => {
 
       const responseData = await response.json();
 
-      // Remove this controller from the active list
       activeHttpRequests.current = activeHttpRequests.current.filter(
         reqCtrl => reqCtrl !== httpAbortCtrl
       );
@@ -35,7 +34,6 @@ export const useHttpClient = () => {
 
     } catch (err) {
       if (err.name === 'AbortError') {
-        // silently ignore aborts
         return;
       }
 
